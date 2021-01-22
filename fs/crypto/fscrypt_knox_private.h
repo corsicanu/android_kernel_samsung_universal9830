@@ -10,6 +10,8 @@
 
 #ifdef CONFIG_DDAR
 #include <sdp/dd.h>
+#else
+#include <sdp/dd_i.h>
 #endif
 
 #define FSCRYPT_KNOX_FLG_DDAR_SHIFT					8

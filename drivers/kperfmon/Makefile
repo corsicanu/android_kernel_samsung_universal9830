@@ -5,6 +5,7 @@
 # Rewritten to use lists instead of if-statements.
 #
 
+ifdef CONFIG_KPERFMON
 FLAG=1
 
 #$(info kperfmon_DUMMY="$(shell cp -f $(srctree)/include/linux/olog.pb.h  $(srctree)/drivers/kperfmon/)")
@@ -43,4 +44,5 @@ $(info kperfmon_DUMMY="$(shell cp -f $(srctree)/drivers/kperfmon/ologk.h $(srctr
 else
 	obj-y				+= ologk.o
 #$(info kperfmon_DUMMY="$(shell cp -f $(srctree)/drivers/kperfmon/ologk.h $(srctree)/include/linux/)")
+endif
 endif

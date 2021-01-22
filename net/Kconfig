@@ -244,9 +244,11 @@ source "net/switchdev/Kconfig"
 source "net/l3mdev/Kconfig"
 source "net/qrtr/Kconfig"
 source "net/ncsi/Kconfig"
+if KNOX_NCM
 # SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA {
 source "net/ncm/Kconfig"
 # SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA }
+endif
 
 config RPS
 	bool

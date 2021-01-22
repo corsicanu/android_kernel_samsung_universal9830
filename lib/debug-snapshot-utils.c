@@ -102,7 +102,7 @@ void dbg_snapshot_hook_hardlockup_entry(void *v_regs)
 #if defined(CONFIG_HARDLOCKUP_DETECTOR_OTHER_CPU) && defined(CONFIG_SEC_DEBUG_LOCKUP_INFO)
 		update_hardlockup_type(cpu);
 #endif
-#ifdef CONFIG_SEC_DEBUG_EXTRA_INFO
+#if defined (CONFIG_SEC_DEBUG_EXTRA_INFO) && defined (CONFIG_SEC_DEBUG_TSP_LOG)
 		secdbg_exin_set_backtrace_cpu(v_regs, cpu);
 #endif
 	}
@@ -306,7 +306,9 @@ static void dbg_snapshot_dump_one_task_info(struct task_struct *tsk, bool is_mai
 	if (tsk->state == TASK_RUNNING ||
 	    tsk->state == TASK_WAKING ||
 	    task_contributes_to_load(tsk)) {
+#if defined (CONFIG_SEC_DEBUG_EXTRA_INFO) && defined (CONFIG_SEC_DEBUG_TSP_LOG)
 		secdbg_dtsk_print_info(tsk, true);
+#endif
 
 		if (tsk->on_cpu && tsk->on_rq &&
 		    tsk->cpu != smp_processor_id())

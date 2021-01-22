@@ -1268,9 +1268,9 @@ static void gc_worker(struct work_struct *work)
 					tmp->npa_timeout = ((u32)(jiffies)) + (get_intermediate_timeout() * HZ);
 					knox_collect_conntrack_data(tmp, NCM_FLOW_TYPE_INTERMEDIATE, 20);
 				}
-			}
 			// SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA }
 #endif
+			}
 			if (nf_conntrack_max95 == 0 || gc_worker_skip_ct(tmp))
 				continue;
 

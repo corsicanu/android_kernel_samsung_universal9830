@@ -1,8 +1,6 @@
 *.gen.S
-<<<<<<< HEAD
-=======
 *.fw
->>>>>>> 2fb72cf7e3e3... firmware: don't ignore bins, we need them
+*.bin
 *.csp
 *.dsp
 ihex2fw

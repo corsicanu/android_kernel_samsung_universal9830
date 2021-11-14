@@ -4,11 +4,12 @@
 #
 
 #
-# Compiler: Android (dev based on r349610) clang version 8.0.8 (https://android.googlesource.com/toolchain/clang 4dba9ad555eabb40b39dc53c12d09423e9faea7b) (https://android.googlesource.com/toolchain/llvm ab552995647d484a712bf15f77e6c6f4e8ac532b) (based on LLVM 8.0.8svn)
+# Compiler: Android (7820050, based on r433403b) clang version 13.0.3 (https://android.googlesource.com/toolchain/llvm-project d3e1bef2bc2bdec355d4fd0163aeb0aabbe4b66c)
 #
 CONFIG_GCC_VERSION=0
 CONFIG_CC_IS_CLANG=y
-CONFIG_CLANG_VERSION=80008
+CONFIG_CLANG_VERSION=130003
+CONFIG_CC_HAS_ASM_GOTO=y
 CONFIG_IRQ_WORK=y
 CONFIG_BUILDTIME_EXTABLE_SORT=y
 CONFIG_THREAD_INFO_IN_TASK=y
@@ -601,6 +602,7 @@ CONFIG_CRYPTO_AES_ARM64_CE_BLK=y
 # General architecture-dependent options
 #
 CONFIG_KPROBES=y
+# CONFIG_JUMP_LABEL is not set
 CONFIG_UPROBES=y
 CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS=y
 CONFIG_KRETPROBES=y
@@ -4293,6 +4295,7 @@ CONFIG_USB_GADGET_STORAGE_NUM_BUFFERS=2
 CONFIG_USB_OLD_CONFIGFS=y
 CONFIG_USB_G_ANDROID=y
 CONFIG_USB_ANDROID_SAMSUNG_COMPOSITE=y
+# CONFIG_USB_ANDROID_SAMSUNG_MTP is not set
 CONFIG_USB_DUN_SUPPORT=y
 # CONFIG_USB_RNDIS_MULTIPACKET_WITH_TIMER is not set
 CONFIG_USB_NCM_SUPPORT_MTU_CHANGE=y
@@ -4776,7 +4779,6 @@ CONFIG_ANDROID_SWITCH=y
 # CONFIG_KS7010 is not set
 # CONFIG_GREYBUS is not set
 # CONFIG_PI433 is not set
-# CONFIG_MTK_MMC is not set
 
 #
 # Gasket devices
@@ -4815,10 +4817,6 @@ CONFIG_SEC_ABC_HUB_BOOTC=y
 # Samsung ABC Hub Booting Time Check eng mode Options
 #
 # CONFIG_SEC_ABC_HUB_BOOTC_ENG is not set
-
-#
-# Samsung LABO Options
-#
 # CONFIG_GOLDFISH is not set
 # CONFIG_CHROME_PLATFORMS is not set
 CONFIG_CLKDEV_LOOKUP=y

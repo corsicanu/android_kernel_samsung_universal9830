@@ -2897,6 +2897,7 @@ do_exit:
 }
 #endif /* CONFIG_SUPPORT_DSU */
 
+#define MAX_DSIM_CNT_FOR_PANEL (MAX_DSIM_CNT)
 static int panel_ioctl_dsim_probe(struct v4l2_subdev *sd, void *arg)
 {
 	int *param = (int *)arg;
@@ -2904,7 +2905,7 @@ static int panel_ioctl_dsim_probe(struct v4l2_subdev *sd, void *arg)
 	struct panel_device *panel = container_of(sd, struct panel_device, sd);
 
 	panel_info("PANEL_IOC_DSIM_PROBE\n");
-	if (param == NULL) {
+	if (param == NULL || *param >= MAX_DSIM_CNT_FOR_PANEL) {
 		panel_err("invalid arg\n");
 		return -EINVAL;
 	}
@@ -4261,8 +4262,8 @@ static int panel_dpui_notifier_callback(struct notifier_block *self,
 			"%d", panel->work[PANEL_WORK_DIM_FLASH].ret);
 	set_dpui_field(DPUI_KEY_PNGFLS, tbuf, size);
 #endif
-//	inc_dpui_u32_field(DPUI_KEY_UB_CON, panel->panel_data.props.ub_con_cnt);
-//	panel->panel_data.props.ub_con_cnt = 0;
+	inc_dpui_u32_field(DPUI_KEY_UB_CON, panel->panel_data.props.ub_con_cnt);
+	panel->panel_data.props.ub_con_cnt = 0;
 
 	return 0;
 }

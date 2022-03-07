@@ -409,6 +409,7 @@ static enum hrtimer_restart watchdog_timer_fn(struct hrtimer *hrtimer)
 	int duration;
 	int softlockup_all_cpu_backtrace = sysctl_softlockup_all_cpu_backtrace;
 
+#ifdef CONFIG_S3C2410_WATCHDOG
 	/*
 	 * 1. check a flag
 	 * 2. check this cpu is 0
@@ -422,7 +423,7 @@ static enum hrtimer_restart watchdog_timer_fn(struct hrtimer *hrtimer)
 			s3c2410wdt_keepalive_common();
 		}
 	}
-
+#endif
 	/* try to enable log_kevent of exynos-snapshot if log_kevent was off because of rcu stall */
 	dbg_snapshot_try_enable("log_kevent", NSEC_PER_SEC * 15);
 	if (!watchdog_enabled)
